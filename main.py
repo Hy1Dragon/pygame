@@ -1,41 +1,35 @@
 import pygame
 
+class Food():
+    def __init__(self,a,b,c):
+        self.image = pygame.image.load(a)# загрузка картинки
+        self.rect = self.image.get_rect()# получение прямоугольника от картинки
+        self.x = b
+        self.y = c
 
-pygame.init() # обезательная программа
+    def draw_image(self):#метод отрисовки картинки
+        screen.blit(self.image, (self.x, self.y))
 
-window_size=(300,300)#размеры окна
+
+fon = Food('кухня.jpg', 0, 0)
+pygame.init()
+window_size=(931,495)#размеры окна
 screen=pygame.display.set_mode(window_size)#сделать экран с размерами
 pygame.display.set_caption("Undertale")
-background_color = (0,0,255)
 clock = pygame.time.Clock()#фпс
-x = 66
-y = 90
+
+op = Food ('еда 1.png',0,0)
+po = Food ('еда 3.png',0,0)
+poop = Food('еда4.png',0,0)
+
 while True:#игровой цикл
-    screen.fill(background_color) #заливка экрана цветом
-    color = (50, 70, 40)
-    r = pygame.Rect(x, y, 150, 60)
+    fon.draw_image()#приминение метода отрисовки картинки к объкеу-картинки
+    op.draw_image()
+    po.draw_image()
+    poop.draw_image()
 
-    pygame.draw.rect(screen,color,r)
-
-    clock.tick(40)#40фпс\с
-    pygame.display.update()#оюновление содержимого экрана
+    clock.tick(40)#40фпс
     for event in pygame.event.get():#события
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                x = x - 5
-            if event.key == pygame.K_w:
-                y = y - 5
-            if event.key == pygame.K_s:
-                y = y + 5
-            if event.key == pygame.K_d:
-                x = x + 5
-
         if event.type == pygame.QUIT:#если нажали крест
               pygame.QUIT()# выход из игры
-
-
-
-
-
-
-
+    pygame.display.update()  # оюновление содержимого экрана
