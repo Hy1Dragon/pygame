@@ -1,30 +1,28 @@
-import pygame #импортируем код в pygame
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout
+import random
+def SANIS():
+    a = ['(@_@)','54','456','745','47','45734','9']
+    asgor.setText(random.choice(a))
 
-class Food():#создание класса
-    def __init__(self,a,b,c):#создание конструктора, в нем создается свойства,он вызывается при создании объекта
-        self.img = pygame.image.load(a)#создание картинки,ЭТО СВОЙСТВО
+app = QApplication([])
+main_win = QWidget()
+main_win.setWindowTitle('Underverse')
+main_win.resize(400,200)
+main_win.show()
+asgor=QLabel('(@_@):')
 
-        self.rect = self.img.get_rect()# получение прямоугольника от картинки,ЭТО СВОЙСТО
-        self.rect.x = b#создание координат,ЭТО СВОЙСТВО
-        self.rect.y = c#создание координат,ЭТО СВОЙСТВО
+list={'task': 'Купить молоко', 'done': False}
+papirus = QPushButton('Pypsik')
+v_line = QVBoxLayout()
 
-    def draw_image(self):#метод отрисовки картинки
-        screen.blit(self.img, (self.rect.x, self.rect.y))
+v_line.addWidget(asgor,alignment = Qt.AlignCenter)
 
+v_line.addWidget(papirus,alignment = Qt.AlignCenter)
 
-fon = Food('кухня.jpg', 0, 0)# создание фона
-plate = Food('plate.png', 360, 450)# создание фона
-pygame.init()#обезательная программа
-window_size=(940,500)#размеры окна
-screen=pygame.display.set_mode(window_size)#сделать экран с размерами
-clock = pygame.time.Clock() #фпс
+main_win.setLayout(v_line)
 
-while True:#игровой цикл
-    fon.draw_image()#приминение метода отрисовки картинки к объкеу klassa Food (фон)
-    plate.draw_image() #приминение метода отрисовки картинки к объкеу klassa Food (тарелка)
+papirus.clicked.connect(SANIS)
 
-    clock.tick(40)#40фпс
-    for event in pygame.event.get():#события
-        if event.type == pygame.QUIT:#если нажали крест
-              pygame.QUIT()# выход из игры
-    pygame.display.update()  # обновление содержимого экрана
+app.exec_()
+
